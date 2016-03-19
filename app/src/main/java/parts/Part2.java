@@ -9,14 +9,16 @@ import android.view.ViewGroup;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import ru.uraljournal.udevs.ural.R;
+import ui.Person;
+import ui.RVAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Part2 extends Fragment {
 
-    private List<Person> persons;
-    private RecyclerView rv;
+    public List<Person> persons;
+    public RecyclerView rv;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -37,7 +39,7 @@ public class Part2 extends Fragment {
         return rootView;
     }
 
-    private void initializeData(){
+    public void initializeData(){
         //TEST DATA
         persons = new ArrayList<>();
         persons.add(new Person("Emma Wilson", "23 years old", R.drawable.ic_launcher));
@@ -57,7 +59,7 @@ public class Part2 extends Fragment {
         persons.add(new Person("Lillie Watts", "35 years old", R.drawable.ic_launcher));
     }
 
-    private void initializeAdapter(){
+    public void initializeAdapter(){
         RVAdapter adapter = new RVAdapter(persons);
         rv.setAdapter(adapter);
     }

@@ -27,9 +27,10 @@ import com.mikepenz.materialdrawer.model.interfaces.Nameable;
 
 import parts.Part1;
 import parts.Part2;
+import ui.ParseTask;
 
 public class GeneralActivity extends ActionBarActivity {
-
+    //
     RelativeLayout backgroundImageGeneral;
     RelativeLayout backgroundColorGeneral;
     Fragment part1;
@@ -45,6 +46,9 @@ public class GeneralActivity extends ActionBarActivity {
         //Init Fragments
         part1 = new Part1();
         part2 = new Part2();
+
+        new ParseTask().execute();
+
         // Handle Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
