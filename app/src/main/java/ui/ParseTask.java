@@ -25,7 +25,7 @@ public class ParseTask extends AsyncTask<Void, Void, String> {
     protected String doInBackground(Void... params) {
         // получаем данные с внешнего ресурса
         try {
-            URL url = new URL("http://addvural.pe.hu/myfilms2.json");
+            URL url = new URL("http://androiddocs.ru/api/friends.json");
 
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
