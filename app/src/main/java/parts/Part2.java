@@ -2,18 +2,19 @@ package parts;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import ru.uraljournal.udevs.ural.R;
-import ui.Person;
-import ui.RVAdapter;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import ru.uraljournal.udevs.ural.R;
+import ui.ParseTask;
+import ui.Person;
+import ui.RVAdapter;
 
 public class Part2 extends Fragment {
 
@@ -33,16 +34,20 @@ public class Part2 extends Fragment {
 
         initializeData();
         initializeAdapter();
-
+        /**/
 
 
         return rootView;
     }
 
     public void initializeData(){
+
+        new ParseTask().execute();
+
         //TEST DATA
         persons = new ArrayList<>();
-        persons.add(new Person("Emma Wilson", "23 years old", R.drawable.ic_launcher));
+
+        /*persons.add(new Person("Emma Wilson", "23 years old", R.drawable.ic_launcher));
         persons.add(new Person("Lavery Maiss", "25 years old", R.drawable.ic_launcher));
         persons.add(new Person("Lillie Watts", "35 years old", R.drawable.ic_launcher));
         persons.add(new Person("Emma Wilson", "23 years old", R.drawable.ic_launcher));
@@ -56,11 +61,11 @@ public class Part2 extends Fragment {
         persons.add(new Person("Lillie Watts", "35 years old", R.drawable.ic_launcher));
         persons.add(new Person("Emma Wilson", "23 years old", R.drawable.ic_launcher));
         persons.add(new Person("Lavery Maiss", "25 years old", R.drawable.ic_launcher));
-        persons.add(new Person("Lillie Watts", "35 years old", R.drawable.ic_launcher));
+        persons.add(new Person("Lillie Watts", "35 years old", R.drawable.ic_launcher));*/
     }
 
     public void initializeAdapter(){
-        RVAdapter adapter = new RVAdapter(persons);
+        RVAdapter adapter = new RVAdapter(new ParseTask().urlList);
         rv.setAdapter(adapter);
     }
 }
