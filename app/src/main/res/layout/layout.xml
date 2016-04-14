@@ -11,5 +11,5 @@
     android:adjustViewBounds="true"
     android:orientation="vertical"
     android:scaleType="fitCenter"
-    android:src="@drawable/oblheadnew"></ImageView>
+    android:src="@drawable/oblhead"></ImageView>
 </LinearLayout>

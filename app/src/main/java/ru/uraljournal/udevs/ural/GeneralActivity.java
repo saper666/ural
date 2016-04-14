@@ -4,11 +4,10 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.graphics.Color;
-import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -18,6 +17,7 @@ import android.widget.Toast;
 import com.mikepenz.iconics.typeface.FontAwesome;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.Badgeable;
@@ -26,17 +26,15 @@ import com.mikepenz.materialdrawer.model.interfaces.Nameable;
 
 import parts.Part1;
 import parts.Part2;
-import parts.Part3;
+import ui.ParseTask;
 
 public class GeneralActivity extends ActionBarActivity {
-
+    //
     RelativeLayout backgroundImageGeneral;
     RelativeLayout backgroundColorGeneral;
     Fragment part1;
-    Fragment part2;
-    Fragment part3;
+    Part2 part2;
     private Drawer.Result drawerResult = null;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,17 +43,15 @@ public class GeneralActivity extends ActionBarActivity {
         backgroundImageGeneral = (RelativeLayout)findViewById(R.id.backgroundGeneral);
         backgroundColorGeneral = (RelativeLayout)findViewById(R.id.container);
         //Init Fragments
-        part1 = new Part1();
+     //   part1 = new Part1();
         part2 = new Part2();
-        part3 = new Part3();
 
-
+        new ParseTask().execute();
 
         // Handle Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.inflateMenu(R.menu.main_menu);
 
         // Инициализируем Navigation Drawer
         drawerResult = new Drawer()
@@ -104,18 +100,48 @@ public class GeneralActivity extends ActionBarActivity {
                             switch (GeneralActivity.this.getString(((Nameable) drawerItem).getNameRes()))
                             {
                                 case "Проза":
-                                    ftrans.replace(R.id.backgroundGeneral,part1);
+                                  //  ftrans.replace(R.id.backgroundGeneral,part1);
+                                    part2.setGenre("Проза");
+                                    ftrans.replace(R.id.backgroundGeneral,part2);
                                     backgroundColorGeneral.setBackgroundColor(Color.WHITE);
                                     backgroundImageGeneral.setBackgroundResource(0);
                                     break;
                                 case "Поэзия":
-                                    ftrans.replace(R.id.backgroundGeneral, part2);
+                                    part2.setGenre("Поэзия");
+                                    ftrans.replace(R.id.backgroundGeneral,part2);
+                                    backgroundColorGeneral.setBackgroundColor(Color.WHITE);
+                                    backgroundImageGeneral.setBackgroundResource(0);
                                     break;
                                 case "Драматургия":
-                                    ftrans.replace(R.id.backgroundGeneral,part3);
+                                    part2.setGenre("Драматургия");
+                                    ftrans.replace(R.id.backgroundGeneral,part2);
+                                    backgroundColorGeneral.setBackgroundColor(Color.WHITE);
+                                    backgroundImageGeneral.setBackgroundResource(0);
                                     break;
-
-
+                                case "Без вымысла":
+                                    part2.setGenre("Без вымысла");
+                                    ftrans.replace(R.id.backgroundGeneral,part2);
+                                    backgroundColorGeneral.setBackgroundColor(Color.WHITE);
+                                    backgroundImageGeneral.setBackgroundResource(0);
+                                    break;
+                                case "Краеведение":
+                                    part2.setGenre("Краеведение");
+                                    ftrans.replace(R.id.backgroundGeneral,part2);
+                                    backgroundColorGeneral.setBackgroundColor(Color.WHITE);
+                                    backgroundImageGeneral.setBackgroundResource(0);
+                                    break;
+                                case "Публицистика":
+                                    part2.setGenre("Публицистика");
+                                    ftrans.replace(R.id.backgroundGeneral,part2);
+                                    backgroundColorGeneral.setBackgroundColor(Color.WHITE);
+                                    backgroundImageGeneral.setBackgroundResource(0);
+                                    break;
+                                case "Критика и библиография":
+                                    part2.setGenre("Критика и библиография");
+                                    ftrans.replace(R.id.backgroundGeneral,part2);
+                                    backgroundColorGeneral.setBackgroundColor(Color.WHITE);
+                                    backgroundImageGeneral.setBackgroundResource(0);
+                                    break;
                             }
                             ftrans.commit();
                           //  Toast.makeText(GeneralActivity.this, GeneralActivity.this.getString(((Nameable) drawerItem).getNameRes()), Toast.LENGTH_SHORT).show();
@@ -148,14 +174,6 @@ public class GeneralActivity extends ActionBarActivity {
                 })
                 .build();
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
-
-
     @Override
     public void onBackPressed() {
         // Закрываем Navigation Drawer по нажатию системной кнопки "Назад" если он открыт

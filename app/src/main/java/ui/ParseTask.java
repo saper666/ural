@@ -1,5 +1,115 @@
 package ui;
 
+        import android.os.AsyncTask;
+        import android.util.Log;
+
+        import org.json.JSONArray;
+        import org.json.JSONException;
+        import org.json.JSONObject;
+
+        import java.io.BufferedReader;
+        import java.io.InputStream;
+        import java.io.InputStreamReader;
+        import java.net.HttpURLConnection;
+        import java.net.URL;
+
+public class ParseTask extends AsyncTask<Void, Void, String> {
+    //использование new ParseTask().execute();
+    HttpURLConnection urlConnection = null;
+    BufferedReader reader = null;
+    String resultJson = "";
+    InputStream inputStream;
+    public static String LOG_TAG = "my_log";
+
+    @Override
+    protected String doInBackground(Void... params) {
+        // получаем данные с внешнего ресурса
+        try {
+        //    URL url = new URL("http://androiddocs.ru/api/friends.json");http://addvural.pe.hu/052013.json
+          //  URL url = new URL("http://addvural.pe.hu/myfilms2.json");
+            URL url = new URL("http://addvural.pe.hu/052013.json");
+
+            urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setRequestMethod("GET");
+            urlConnection.connect();
+
+            Log.d(LOG_TAG, "test");
+            inputStream = urlConnection.getInputStream();
+            StringBuilder buffer = new StringBuilder();
+
+            reader = new BufferedReader(new InputStreamReader(inputStream));
+
+            String line;
+            while ((line = reader.readLine()) != null) {
+                buffer.append(line);
+            }
+            resultJson = buffer.toString();
+
+        } catch (Exception e) {
+            Log.d(LOG_TAG, "ошибка: ");
+            e.printStackTrace();
+        }
+        finally
+        {
+            try { inputStream.close(); } catch(Exception se) {Log.d(LOG_TAG, "ошибка: ");}
+            try { reader.close(); } catch(Exception se) {Log.d(LOG_TAG, "ошибка: ");}
+           // try { urlConnection.close(); } catch(Exception se) {}
+        }
+        return resultJson;
+    }
+
+    @Override
+    protected void onPostExecute(String strJson) {
+        super.onPostExecute(strJson);
+        // выводим целиком полученную json-строку
+        Log.d(LOG_TAG, strJson);
+
+        JSONObject dataJsonObj;
+        String secondName;
+
+        try {
+            dataJsonObj = new JSONObject(strJson);
+            JSONArray friends = dataJsonObj.getJSONArray("Films");
+
+            // 1. достаем инфо о втором друге - индекс 1
+           // JSONObject secondFriend = friends.getJSONObject(1);
+          //  secondName = secondFriend.getString("name");
+         //   Log.d(LOG_TAG, "Второе имя: ");
+
+            // 2. перебираем и выводим контакты каждого друга
+            for (int i = 0; i < friends.length(); i++) {
+                JSONObject friend = friends.getJSONObject(i);
+
+               // JSONObject contacts = friend.getJSONObject("contacts");
+
+                String author = friend.getString("author");
+                String title = friend.getString("title");
+                String genre = friend.getString("razdel");
+                String description = friend.getString("description");
+
+              //  Log.d(LOG_TAG, "author: " + author);
+              //  Log.d(LOG_TAG, "title: " + title);
+              //  Log.d(LOG_TAG, "genre: " + genre);
+              //  Log.d(LOG_TAG, "description: " + description);
+
+                Article.Articles.add(new Article(author,title,genre,description));
+
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Log.d(LOG_TAG, "плохо");
+            Log.d(LOG_TAG, e.toString());
+
+        }
+
+    }
+}
+
+/* на всякий случай...
+
+package ui;
+
 import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -105,10 +215,11 @@ public class ParseTask extends AsyncTask<Void, Void, String> {
                 Log.d(LOG_TAG, "phone: " + phone);
                 Log.d(LOG_TAG, "email: " + email);
                 Log.d(LOG_TAG, "skype: " + skype);
-            }*/
+            }
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
 }
+*/

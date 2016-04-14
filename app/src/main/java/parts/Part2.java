@@ -20,7 +20,7 @@ public class Part2 extends Fragment {
 
     public List<Person> persons;
     public RecyclerView rv;
-
+    private String genre;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -38,6 +38,10 @@ public class Part2 extends Fragment {
 
 
         return rootView;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 
     public void initializeData(){
@@ -64,8 +68,10 @@ public class Part2 extends Fragment {
         persons.add(new Person("Lillie Watts", "35 years old", R.drawable.ic_launcher));*/
     }
 
+
+
     public void initializeAdapter(){
-        RVAdapter adapter = new RVAdapter(new ParseTask().urlList);
+        RVAdapter adapter = new RVAdapter(getActivity(),genre);
         rv.setAdapter(adapter);
     }
 }

@@ -27,7 +27,8 @@
             android:id="@+id/person_name"
             android:layout_toRightOf="@+id/person_photo"
             android:layout_alignParentTop="true"
-            android:textSize="30sp"
+            android:textSize="22sp"
+            android:textColor="@android:color/black"
             />
 
         <TextView
@@ -36,6 +37,7 @@
             android:id="@+id/person_age"
             android:layout_toRightOf="@+id/person_photo"
             android:layout_below="@+id/person_name"
+            android:textColor="@android:color/black"
             />
 
     </RelativeLayout>

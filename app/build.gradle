@@ -28,4 +28,5 @@ dependencies {
     compile('com.mikepenz.materialdrawer:library:0.9.5@aar') {
         transitive = true
     }
+    compile files('libs/YouTubeAndroidPlayerApi.jar')
 }
