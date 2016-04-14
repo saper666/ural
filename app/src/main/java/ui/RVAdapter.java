@@ -29,6 +29,7 @@ Context ctx;
         TextView title;
         TextView author;
        // ImageView personPhoto;
+        // ImageView personPhoto;
 
         ArticleViewHolder(View itemView) {
             super(itemView);
