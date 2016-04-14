@@ -77,7 +77,7 @@ public class ParseTask extends AsyncTask<Void, Void, String> {
          //   Log.d(LOG_TAG, "Второе имя: ");
 
             // 2. перебираем и выводим контакты каждого друга
-            for (int i = 0; i < friends.length(); i++) {
+            for (int i = 1; i < friends.length(); i++) {
                 JSONObject friend = friends.getJSONObject(i);
 
                // JSONObject contacts = friend.getJSONObject("contacts");
