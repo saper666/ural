@@ -102,43 +102,57 @@ public class GeneralActivity extends ActionBarActivity {
                                 case "Проза":
                                   //  ftrans.replace(R.id.backgroundGeneral,part1);
                                     part2.setGenre("Проза");
-                                    ftrans.replace(R.id.backgroundGeneral,part2);
+                                    ftrans.replace(R.id.backgroundGeneral, part2);
+                                    ftrans.detach(part2);
+                                    ftrans.attach(part2);
                                     backgroundColorGeneral.setBackgroundColor(Color.WHITE);
                                     backgroundImageGeneral.setBackgroundResource(0);
                                     break;
                                 case "Поэзия":
                                     part2.setGenre("Поэзия");
                                     ftrans.replace(R.id.backgroundGeneral,part2);
+                                    ftrans.detach(part2);
+                                    ftrans.attach(part2);
                                     backgroundColorGeneral.setBackgroundColor(Color.WHITE);
                                     backgroundImageGeneral.setBackgroundResource(0);
                                     break;
                                 case "Драматургия":
                                     part2.setGenre("Драматургия");
                                     ftrans.replace(R.id.backgroundGeneral,part2);
+                                    ftrans.detach(part2);
+                                    ftrans.attach(part2);
                                     backgroundColorGeneral.setBackgroundColor(Color.WHITE);
                                     backgroundImageGeneral.setBackgroundResource(0);
                                     break;
                                 case "Без вымысла":
                                     part2.setGenre("Без вымысла");
                                     ftrans.replace(R.id.backgroundGeneral,part2);
+                                    ftrans.detach(part2);
+                                    ftrans.attach(part2);
                                     backgroundColorGeneral.setBackgroundColor(Color.WHITE);
                                     backgroundImageGeneral.setBackgroundResource(0);
                                     break;
                                 case "Краеведение":
                                     part2.setGenre("Краеведение");
                                     ftrans.replace(R.id.backgroundGeneral,part2);
+                                    ftrans.detach(part2);
+                                    ftrans.attach(part2);
                                     backgroundColorGeneral.setBackgroundColor(Color.WHITE);
                                     backgroundImageGeneral.setBackgroundResource(0);
                                     break;
                                 case "Публицистика":
                                     part2.setGenre("Публицистика");
                                     ftrans.replace(R.id.backgroundGeneral,part2);
+                                    ftrans.detach(part2);
+                                    ftrans.attach(part2);
                                     backgroundColorGeneral.setBackgroundColor(Color.WHITE);
                                     backgroundImageGeneral.setBackgroundResource(0);
                                     break;
                                 case "Критика и библиография":
                                     part2.setGenre("Критика и библиография");
                                     ftrans.replace(R.id.backgroundGeneral,part2);
+                                    ftrans.detach(part2);
+                                    ftrans.attach(part2);
                                     backgroundColorGeneral.setBackgroundColor(Color.WHITE);
                                     backgroundImageGeneral.setBackgroundResource(0);
                                     break;
