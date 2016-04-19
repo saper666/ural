@@ -1,33 +1,25 @@
 package parts;
 
 import android.app.Fragment;
-import android.app.ListFragment;
 import android.graphics.Point;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Display;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.widget.ArrayAdapter;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import ru.uraljournal.udevs.ural.R;
 import ui.Article;
-import ui.ParseTask;
-import ui.Person;
-import ui.RVAdapter;
 
 public class Part1 extends Fragment {
-
+    Menu menu;
     WebView Rt;
     int pos = 0;
+    public int defFontSize = 0;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -35,10 +27,10 @@ public class Part1 extends Fragment {
         View rootView = inflater.inflate(R.layout.activity_task, container, false);
 
 
-      //  Toolbar toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
       //  setSupportActionBar(toolbar);
       //  getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-      //  toolbar.inflateMenu(R.menu.main_menu);
+//        toolbar.inflateMenu(R.menu.main_menu);
 
 
        // int pos = getIntent().getIntExtra("id",0);
@@ -61,7 +53,7 @@ public class Part1 extends Fragment {
         Rt.getSettings().setLoadWithOverviewMode(true);
         Rt.getSettings().setUseWideViewPort(true);
 
-        int defFontSize = 12;
+        defFontSize = 12;
         Display display = getActivity().getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
@@ -74,16 +66,14 @@ public class Part1 extends Fragment {
         Rt.getSettings().setDefaultFontSize(defFontSize);
 
         Rt.loadDataWithBaseURL(null,htmlText, "text/html", "UTF-8",null);
-
         return rootView;
+
+
     }
 public void setPos(int pos)
 {
     this.pos = pos;
 }
-
-
-
 
 
 }

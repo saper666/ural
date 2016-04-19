@@ -1,18 +1,23 @@
 package ru.uraljournal.udevs.ural;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.RelativeLayout;
+import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mikepenz.iconics.typeface.FontAwesome;
@@ -34,6 +39,8 @@ public class GeneralActivity extends ActionBarActivity {
     Fragment part1;
     Part2 part2;
     private Drawer.Result drawerResult = null;
+    Toolbar toolbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +55,10 @@ public class GeneralActivity extends ActionBarActivity {
         new ParseTask().execute();
 
         // Handle Toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.inflateMenu(R.menu.main_menu);
+        /*toolbar.inflateMenu(R.menu.main_menu);*/
 
         // Инициализируем Navigation Drawer
         drawerResult = new Drawer()
@@ -194,6 +201,75 @@ public class GeneralActivity extends ActionBarActivity {
                getMenuInflater().inflate(R.menu.main_menu, menu);
                return true;
         }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        CharSequence message;
+
+        switch (item.getItemId()) {
+            case R.id.action_edit:
+               //message = "Выбран пункт шрифт";
+                ShowDialog();
+                break;
+            default:
+                return false;
+        }
+        // выводим уведомление о выбранном пункте меню
+        //Toast toast = Toast.makeText(this, message, Toast.LENGTH_LONG);
+
+        //toast.setGravity(Gravity.CENTER, 0, 0);
+        //toast.show();
+        return true;
+    }
+
+    public void ShowDialog()
+    {
+        final AlertDialog.Builder popDialog = new AlertDialog.Builder(this);
+        final SeekBar seek = new SeekBar(this);
+        final TextView tw = new TextView(this);
+        seek.setMax(100);
+
+        popDialog.setIcon(android.R.drawable.ic_media_ff);
+        popDialog.setTitle("Выберите размер шрифта ");
+        popDialog.setView(seek);
+
+
+
+        seek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser){
+                //Do something here with new value
+//                Part1 p1 = new Part1();
+//                p1.defFontSize += progress/10;
+
+            }
+
+            public void onStartTrackingTouch(SeekBar arg0) {
+                // TODO Auto-generated method stub
+
+            }
+
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
+
+            }
+        });
+
+
+        // Button OK
+        popDialog.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+
+                });
+
+
+        popDialog.create();
+        popDialog.show();
+
+    }
 
     @Override
     public void onBackPressed() {
