@@ -30,6 +30,7 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.Nameable;
 
 import parts.Part2;
+import ui.Article;
 import ui.ParseTask;
 
 public class GeneralActivity extends ActionBarActivity {
@@ -109,6 +110,7 @@ public class GeneralActivity extends ActionBarActivity {
                                 case "Проза":
                                   //  ftrans.replace(R.id.backgroundGeneral,part1);
                                     part2.setGenre("Проза");
+                                    Article.sort("Проза");
                                     ftrans.replace(R.id.backgroundGeneral, part2);
                                     ftrans.detach(part2);
                                     ftrans.attach(part2);
@@ -117,6 +119,7 @@ public class GeneralActivity extends ActionBarActivity {
                                     break;
                                 case "Поэзия":
                                     part2.setGenre("Поэзия");
+                                    Article.sort("Поэзия");
                                     ftrans.replace(R.id.backgroundGeneral,part2);
                                     ftrans.detach(part2);
                                     ftrans.attach(part2);
@@ -125,6 +128,7 @@ public class GeneralActivity extends ActionBarActivity {
                                     break;
                                 case "Драматургия":
                                     part2.setGenre("Драматургия");
+                                    Article.sort("Драматургия");
                                     ftrans.replace(R.id.backgroundGeneral,part2);
                                     ftrans.detach(part2);
                                     ftrans.attach(part2);
@@ -133,6 +137,7 @@ public class GeneralActivity extends ActionBarActivity {
                                     break;
                                 case "Без вымысла":
                                     part2.setGenre("Без вымысла");
+                                    Article.sort("Без вымысла");
                                     ftrans.replace(R.id.backgroundGeneral,part2);
                                     ftrans.detach(part2);
                                     ftrans.attach(part2);
@@ -141,6 +146,7 @@ public class GeneralActivity extends ActionBarActivity {
                                     break;
                                 case "Краеведение":
                                     part2.setGenre("Краеведение");
+                                    Article.sort("Краеведение");
                                     ftrans.replace(R.id.backgroundGeneral,part2);
                                     ftrans.detach(part2);
                                     ftrans.attach(part2);
@@ -149,6 +155,7 @@ public class GeneralActivity extends ActionBarActivity {
                                     break;
                                 case "Публицистика":
                                     part2.setGenre("Публицистика");
+                                    Article.sort("Публицистика");
                                     ftrans.replace(R.id.backgroundGeneral,part2);
                                     ftrans.detach(part2);
                                     ftrans.attach(part2);
@@ -157,6 +164,7 @@ public class GeneralActivity extends ActionBarActivity {
                                     break;
                                 case "Критика и библиография":
                                     part2.setGenre("Критика и библиография");
+                                    Article.sort("Критика и библиография");
                                     ftrans.replace(R.id.backgroundGeneral,part2);
                                     ftrans.detach(part2);
                                     ftrans.attach(part2);

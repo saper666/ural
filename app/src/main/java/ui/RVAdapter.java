@@ -67,16 +67,16 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ArticleViewHolder>
         //  personViewHolder.personName.setText(persons.get(i).name);
         //  personViewHolder.personAge.setText(persons.get(i).age);
         //  personViewHolder.personPhoto.setImageResource(persons.get(i).photoId);
-        ArrayList<Article> sortArt = new ArrayList<Article>();
-        for (Article str : Article.Articles) {
-            if (str.Genre.equals(genre))
-                sortArt.add(str);
-        }
+       // ArrayList<Article> sortArt = new ArrayList<Article>();
+       // for (Article str : Article.Articles) {
+       //     if (str.Genre.equals(genre))
+       //         sortArt.add(str);
+       // }
       //  personViewHolder.title.setText(Article.Articles.get(i).Title);
       //  personViewHolder.author.setText(Article.Articles.get(i).Author);
 
-        personViewHolder.title.setText(Article.Articles.get(i).Title);
-        personViewHolder.author.setText(Article.Articles.get(i).Author);
+        personViewHolder.title.setText(Article.sortArt.get(i).Title);
+        personViewHolder.author.setText(Article.sortArt.get(i).Author);
         pos = i;
         personViewHolder.cv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,6 +101,6 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ArticleViewHolder>
 
     @Override
     public int getItemCount() {
-        return Article.Articles.size();
+        return Article.sortArt.size();
     }
 }
